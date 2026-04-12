@@ -1,4 +1,23 @@
+# Игнорировать всё
+*
+
+# Но не игнорировать эти файлы
+!.gitignore
+!main.py
+!Dockerfile
+!docker-compose.yml
+!requirements.txt
+!README.md
+
+# Игнорировать временные файлы Python
 __pycache__/
 *.pyc
-shop.db
+*.pyo
+
+# Игнорировать базу данных
+*.db
+*.sqlite
+
+# Игнорировать виртуальное окружение
+venv/
 .env
