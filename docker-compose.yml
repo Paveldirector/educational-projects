@@ -1,7 +1,4 @@
-version: '3.8'
-
 services:
-  # PostgreSQL база данных
   db:
     image: postgres:15
     container_name: my-postgres
@@ -13,12 +10,10 @@ services:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
-    restart: unless-stopped
 
-  # FastAPI приложение
   api:
     build: .
-    container_name: my-fastapi-app
+    container_name: shop_fastapi-api
     ports:
       - "8000:8000"
     depends_on:
@@ -27,7 +22,6 @@ services:
       DATABASE_URL: postgresql://myuser:mypassword@db:5432/mydb
     volumes:
       - ./:/app
-    restart: unless-stopped
 
 volumes:
   postgres_data:
