@@ -1,10 +1,11 @@
 # Импортируем нужные библиотеки
-from fastapi import FastAPI, Body
+import os
+from fastapi import FastAPI, Body, HTTPException
 from contextlib import asynccontextmanager  # для lifespan
 import asyncpg
 
 # Параметры подключения к PostgreSQL (внутри Docker Compose)
-DATABASE_URL = "postgresql://myuser:mypassword@db:5432/mydb"
+DATABASE_URL = os.environ.get("DATABASE_URL", "postgresql://myuser:mypassword@db:5432/mydb")
 
 # 1. СНАЧАЛА функция подключения к БД
 async def get_db():
@@ -69,7 +70,7 @@ async def get_product(product_id: int):       # product_id приходит из
     await conn.close()
     
     if row is None:                           # если товара с таким ID нет
-        return {"error": "Товар не найден"}
+        raise HTTPException(status_code=404, detail="Товар не найден")
     
     return dict(row)
 

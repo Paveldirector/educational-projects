@@ -11,6 +11,17 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
+  db-test:
+    image: postgres:15
+    container_name: my-postgres-test
+    environment:
+      POSTGRES_USER: testuser
+      POSTGRES_PASSWORD: testpass
+      POSTGRES_DB: testdb
+    ports:
+      - "5433:5432"  # другой порт, чтобы не конфликтовать
+    tmpfs: /var/lib/postgresql/data  # данные в памяти (не сохраняются)
+
   api:
     build: .
     container_name: shop_fastapi-api

@@ -1,5 +1,5 @@
 import os
-os.environ["DATABASE_URL"] = "sqlite:///./test.db"
+os.environ["DATABASE_URL"] = "postgresql://myuser:mypassword@localhost:5432/mydb"
 
 import pytest
 from fastapi.testclient import TestClient
