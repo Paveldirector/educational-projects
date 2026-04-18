@@ -1,24 +1,24 @@
 # Игнорировать всё
 *
 
-# Но не игнорировать эти файлы
+# Но не игнорировать эти файлы и папки
 !.gitignore
 !main.py
 !Dockerfile
 !docker-compose.yml
 !requirements.txt
 !README.md
-!Game_Alien_Invasion/
+!tests/
 
 # Игнорировать временные файлы Python
 __pycache__/
 *.pyc
 *.pyo
 
-# Игнорировать базу данных
-*.db
-*.sqlite
-
 # Игнорировать виртуальное окружение
 venv/
 .env
+
+# Игнорировать базу данных
+*.db
+*.sqlite
